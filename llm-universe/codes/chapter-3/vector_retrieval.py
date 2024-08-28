@@ -4,14 +4,12 @@
 # @File    : vector_retrieval.py
 # @Description :
 
-from langchain.vectorstores import Chroma
 
-# from dataset import vectordb
+from dataset import vectordb
 
-vectordb = Chroma(persist_directory=r"C:\llm_study\lll-universe\codes\chapter-3")
 question = "什么是民法典？"
 
-
-sim_docs = vectordb.similarity_search(question,k=3)
-print(sim_docs)
-print(len(sim_docs))
+# sim_docs = vectordb.similarity_search(question,k=3)
+mmr_docs = vectordb.max_marginal_relevance_search(question,k=3)
+print(mmr_docs)
+print(len(mmr_docs))
